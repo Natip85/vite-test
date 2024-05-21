@@ -18,10 +18,10 @@ export function TextSlider({ messages }: TextSliderProps) {
         {messages.map(({ text, subtext }, index) => (
           <div
             key={`${text}-${index}`}
-            className="absolute top-0 left-0 w-full h-full flex flex-col items-center gap-3 py-10 px-5 transition-opacity duration-1000 ease-in-out"
-            style={{
-              opacity: imageIndex === index ? 1 : 0,
-            }}
+            className={cn(
+              "absolute top-0 left-0 w-full h-full flex flex-col items-center gap-3 py-10 px-5 transition-opacity duration-1000 ease-in-out",
+              imageIndex === index ? "opacity-100" : "opacity-0"
+            )}
           >
             <span className="text-base font-semibold text-white">{text}</span>
             <span className="text-xs text-white mb-3">{subtext}</span>
@@ -33,10 +33,9 @@ export function TextSlider({ messages }: TextSliderProps) {
       </div>
 
       <div
-        className="absolute bottom-5 left-[50%] flex gap-1"
-        style={{
-          translate: "-50%",
-        }}
+        className={cn(
+          "absolute bottom-5 left-[50%] flex gap-1 transform -translate-x-1/2"
+        )}
       >
         {messages.map((_, index) => (
           <button
